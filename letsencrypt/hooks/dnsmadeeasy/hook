@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+export DME_API_KEY='{{ data.key }}'
+export DME_SECRET_KEY='{{ data.secret }}'
+
+${path}/virtualenv/bin/python3 ${path}/repo/hook.py "$@"

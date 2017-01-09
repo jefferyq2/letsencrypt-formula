@@ -1,0 +1,10 @@
+{## Start with  defaults from defaults.yaml ##}
+{% import_yaml "letsencrypt/defaults.yaml" as default_settings %}
+
+{## Merge in openssh:lookup pillar ##}
+{% set letsencrypt = salt['pillar.get'](
+    'letsencrypt',
+    default=default_settings.letsencrypt,
+    merge=True
+  )
+%}

@@ -1,0 +1,4 @@
+# Managed by Salt
+{% for domain, data in salt['pillar.get']('letsencrypt:domains', {}).iteritems() -%}
+{{ domain }} {% if data and data.get('alternatives') -%}{{ data.alternatives|join(' ') }}{% endif %}
+{% endfor -%}

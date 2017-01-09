@@ -1,0 +1,16 @@
+# Managed by Salt
+{% from "letsencrypt/map.jinja" import letsencrypt with context -%}
+{% if config -%}
+{% for key, value in config.iteritems() -%}
+{{ key|upper }}="{{ value }}"
+{% endfor -%}
+{% endif -%}
+{% if hook -%}
+{% set hooks = salt['pillar.get']('letsencrypt:hooks', {}) -%}
+{% set hookdata = hooks.get(hook) -%}
+{% if hookdata.type == 'executable' -%}
+HOOK={{ hookdata.path }}
+{% else -%}
+HOOK={{ letsencrypt.files.hooksdir }}/{{ hook }}/hook
+{% endif -%}
+{% endif -%}
