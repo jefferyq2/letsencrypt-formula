@@ -21,9 +21,9 @@
 
 /etc/dehydrated/hooks/{{ name }}/hook-repo:
   git.latest:
-    - name: https://github.com/alisade/letsencrypt-DNSMadeEasy-hook.git
+    - name: https://github.com/bushelpowered/letsencrypt-DNSMadeEasy-hook.git
     - target: /etc/dehydrated/hooks/{{ name }}/repo
-    - rev: ffe78f0feac8729d7d5e47ac0c49f83301de3c13
+    - rev: 3fe6bc4057e08b22facc7b46a83c0f7af1098430
     - force_clone: True
     - force_reset: True
     - user: root
