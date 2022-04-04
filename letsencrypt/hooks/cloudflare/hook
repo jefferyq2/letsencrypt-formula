@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# Lil dehydrated hook to provision via CloudFlare -- setup on Aug 12, 2021 by lsandino
+#
+
+path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+export CF_KEY='{{ data.key }}'
+export CF_EMAIL='{{ data.email }}'
+
+# use vault-vars
+#vault-vars -i ${path}/vault-vars.yaml -o ${path}/vv.auto.tfvars.json
+#export CF_KEY=$(cat ${path}/vv.auto.tfvars.json |jq -r '.cloudflare.api_token')
+#export CF_EMAIL=$(cat ${path}/vv.auto.tfvars.json |jq -r '.cloudflare.email')
+#rm -rf ${path}/vv.auto.tfvars.json
+
+# Enable debug mode
+#export CF_DEBUG=true
+
+# Python script (wasn't working)
+#${path}/virtualenv/bin/python3 ${path}/python/hook.py "$@"
+
+# Bash Script
+export CF_TOKEN=$CF_KEY
+bash ${path}/repo/cf-hook.sh "$@"
