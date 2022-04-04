@@ -39,7 +39,7 @@ letsencrypt-domains:
     - group: root
     - mode: 600
 
-{% for name, data in salt['pillar.get']('letsencrypt:domains', {}).iteritems() %}
+{% for name, data in salt['pillar.get']('letsencrypt:domains', {}).items() %}
 {% set safename = name|replace('.', '-') %}
   {% if data %}
     {% if data.get('config') or data.get('hook') %}
@@ -71,7 +71,7 @@ letsencrypt-cert-{{ safename }}-config:
   {% endif %}
 {% endfor %}
 
-{% for name, data in salt['pillar.get']('letsencrypt:accounts', {}).iteritems() %}
+{% for name, data in salt['pillar.get']('letsencrypt:accounts', {}).items() %}
 letsencrypt-account-{{ name }}:
   file.directory:
     - name: {{ letsencrypt.files.configdir }}/accounts/{{ name }}
@@ -100,7 +100,7 @@ letsencrypt-account-registration:
     - mode: 600
 {% endfor %}
 
-{% for name, data in salt['pillar.get']('letsencrypt:hooks', {}).iteritems() %}
+{% for name, data in salt['pillar.get']('letsencrypt:hooks', {}).items() %}
 {% if data.type != 'executable' %}
 {% with name=name, data=data %}
 {% set template = 'letsencrypt/hooks/' ~ data.type ~ '/init.sls' %}

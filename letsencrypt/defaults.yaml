@@ -1,14 +1,14 @@
 letsencrypt:
   config:
-    CA: https://acme-v01.api.letsencrypt.org/directory
-    KEYSIZE: 4096
+    CA: https://acme-v02.api.letsencrypt.org/directory
+    KEYSIZE: 2048
   files:
     configdir: /etc/dehydrated
     hooksdir: /etc/dehydrated/hooks
     certsdir: /etc/dehydrated/certs
     dehydrated_bin: /usr/local/bin/dehydrated
-    dehydrated_bin_src: https://raw.githubusercontent.com/lukas2511/dehydrated/b36d638a910ce7c6be0bb8330d1d945a653f70af/dehydrated
-    dehydrated_bin_hash: 68562503d1a5a80756cef45bda3748052c250c52137716926355c68fd3ddc47274e247b58cdcd57cd442630cf0075fab90b15d9191bafe71054756ea0a8f679a
+    dehydrated_bin_src: https://raw.githubusercontent.com/lukas2511/dehydrated/v0.6.5/dehydrated
+    dehydrated_bin_hash: 8a3644f8279ba00ecfa9d6b7bb0d31a45f5ba1faf0e74171e22125ba5a168515e57521165c1bf5793a6c4d0582530e61f7fcde4adf2d40ca62f3696a9e5d76cd
     config: /etc/dehydrated/config
     config_src: salt://letsencrypt/files/config
     domains: /etc/dehydrated/domains.txt

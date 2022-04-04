@@ -1,8 +1,8 @@
 # Managed by Salt
 {% from "letsencrypt/map.jinja" import letsencrypt with context -%}
 {% if config -%}
-{% for key, value in config.iteritems() -%}
-{{ key|upper }}="{{ value }}"
+{% for key, value in config.items() -%}
+{{ key | upper }}="{{ value }}"
 {% endfor -%}
 {% endif -%}
 {% if hook -%}

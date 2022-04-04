@@ -5,6 +5,8 @@
 {% set letsencrypt = salt['pillar.get'](
     'letsencrypt',
     default=default_settings.letsencrypt,
-    merge=True
-  )
+    merge=True,
+    merge_nested_lists=True
+  ) 
 %}
+
